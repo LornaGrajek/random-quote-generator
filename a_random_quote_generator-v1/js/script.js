@@ -14,7 +14,8 @@ const quotes = [
   {quote: 'A witty woman is a treasure; a witty beauty is a power.',
    source: 'George Meredith',
    citation: 'Diana of the Crossways',
-   year: 1885 },
+   year: 1885,
+   type: 'novel' },
    {quote: 'It is in vain to say human beings ought to be satisfied with tranquility: they must have action and they will make it if they can not find it.',
    source: 'Charlotte Bronte',
    citation: 'Jane Eyre',
@@ -27,6 +28,7 @@ const quotes = [
    },
    {quote: 'The mind is everything. What you think, you become',
    source: 'Buddha',
+   type: 'speech'
    }
 ];
 /***
@@ -54,6 +56,9 @@ function printQuote() {
   };
   if (randomQuote.year) {
     html += `<span class="year">${randomQuote.year}</span>`;
+  };
+  if (randomQuote.type) {
+    html += `<span class="type">${randomQuote.type}</span>`;
   };
 
   html += `</p>`;
