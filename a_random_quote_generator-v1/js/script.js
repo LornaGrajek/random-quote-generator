@@ -40,16 +40,16 @@ function getRandomQuote(array) {
   return randomObject;
 }
 
-/* function to get a random color */
+/* function to get a random color, citation https://dev.to/akhil_001/generating-random-color-with-single-line-of-js-code-fhj */
 
-function geRandomColor() {
+function getRandomColor() {
     let randomColor = '#'+ Math.floor(Math.random() *16777215).toString(16);
     return randomColor;
 }
 
 
 /***
- * `printQuote` function
+ * `printQuote` function, if statement at the end changes background color everytime a new quote is printed
 ***/
 function printQuote() {
   let randomQuote = getRandomQuote(quotes);
@@ -65,15 +65,20 @@ function printQuote() {
     html += `<span class="year">${randomQuote.year}</span>`;
   };
   if (randomQuote.type) {
-    html += `<span class="type">${randomQuote.type}</span>`;
+    html += `<span class="type">, ${randomQuote.type}</span>`;
   };
 
   html += `</p>`;
 document.getElementById('quote-box').innerHTML = html;
-console.log(randomQuote);
-console.log(randomQuote.citaion);
-console.log(html);
+
+  if (randomQuote) {
+    document.body.style.background = getRandomColor();
+  }
 }
+
+/* Method that prints a new quote and different color every 8 seconds indefinitely */
+setInterval(printQuote, 8000);
+
 
 
 /***
